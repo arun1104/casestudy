@@ -1,5 +1,5 @@
-# casestudy
-A case study of Hotel booking scenario.
+# Microservice interaction using Message Queue
+Domain : A case study of Hotel booking scenario.
 
 
 ## Technology stack
