@@ -1,0 +1,5 @@
+{
+    "mocha.files.glob": "C:\\casestudy\\BookingService\\test\\*.js",
+    "mocha.subdirectory": "C:\\casestudy\\BookingService\\test",
+    "mocha.path": "C:\\casestudy\\BookingService\\node_modules\\mocha"
+}
