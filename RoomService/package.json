@@ -1,0 +1,27 @@
+{
+    "name": "room",
+    "version": "1.0.0",
+    "description": "Rooms management",
+    "main": "app.js",
+    "dependencies": {
+        "express": "^4.17.1",
+        "express-graphql": "^0.9.0",
+        "graphql": "^14.4.2",
+        "mongoose": "^5.6.6",
+        "uuid": "^3.3.2"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/arun1104/casestudy.git"
+    },
+    "author": "arun rajeevan",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/arun1104/casestudy/issues"
+    },
+    "homepage": "https://github.com/arun1104/casestudy#readme"
+}
