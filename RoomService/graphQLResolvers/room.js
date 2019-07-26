@@ -5,14 +5,15 @@ class Resolvers {
     constructor(dbLayer = dataAccessLayer) {
         this.dataAccessLayer = dbLayer;
         this.room = this.roomResolver;
-        this.roomsResolver = this.roomsResolver;
+        this.rooms = this.roomsResolver;
     }
     async roomResolver(args, context) {
         let res = await this.dataAccessLayer.getDocs(args);
         return res[0];
     }
     async roomsResolver(parent, args, context, info) {
-        return this.dataAccessLayer.getDocs({});
+        let res = await this.dataAccessLayer.getDocs({});
+        return res;
     }
 }
 Resolvers.dataAccessLayer = dataAccessLayer;
