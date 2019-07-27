@@ -38,9 +38,9 @@ class DataAccessLayer {
         try {
             await this.mongoose.connect(this.dbUrl, { useNewUrlParser: true });
             const RoomModel = this.models.getModel("Rooms");
-            let data = req.data;
-            let query = req.query;
-            let updatedRoomDoc = RoomModel.findOneAndUpdate(query, data);
+            let query = { id: req.id };
+            let data = req;
+            let updatedRoomDoc = await RoomModel.findOneAndUpdate(query, data);
             return updatedRoomDoc;
         } catch (error) {
             console.log("Error on edit doc of DB");

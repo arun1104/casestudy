@@ -10,4 +10,6 @@ type Query {
     }
 type Mutation {
    createRoom(id:ID,name:String,available_amount:Int,required_points:Int):Room
+   editRoom(id:ID,name:String,available_amount:Int,required_points:Int):Room
+   removeRoom(id:ID,name:String,available_amount:Int,required_points:Int):Room
 }
