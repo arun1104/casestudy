@@ -55,7 +55,7 @@
             "type": "node",
             "request": "launch",
             "name": "app",
-            "program": "${workspaceRoot}/RoomService/app",
+            "program": "${workspaceRoot}/UserService/app",
             "env": { "NODE_ENV": "dev" }
         }
     ]

@@ -3,7 +3,7 @@ var mongoose = require("mongoose");
 const { Models } = require('./model.js');
 let dbModels = new Models(mongoose);
 class DataAccessLayer {
-    constructor(db = mongoose, models = dbModels, collectionName = "Rooms", dbHost = 'mongodb://localhost:27017/') {
+    constructor(db = mongoose, models = dbModels, collectionName = "Users", dbHost = 'mongodb://localhost:27017/') {
         this.mongoose = db;
         this.dbHost = dbHost;
         this.collection = collectionName;
@@ -13,7 +13,7 @@ class DataAccessLayer {
     async getDocs(query) {
         try {
             let con = await this.mongoose.connect(this.dbUrl, { useNewUrlParser: true });
-            const RoomModel = this.models.getModel("Rooms");
+            const RoomModel = this.models.getModel("Users");
             const res = await RoomModel.find(query);
             return res;
         } catch (error) {
@@ -24,7 +24,7 @@ class DataAccessLayer {
     async saveDoc(req) {
         try {
             await this.mongoose.connect(this.dbUrl, { useNewUrlParser: true });
-            const RoomModel = this.models.getModel("Rooms");
+            const RoomModel = this.models.getModel("Users");
             let room = req;
             let roomDocument = new RoomModel(req);
             let newRoomDoc = await roomDocument.save();
@@ -37,7 +37,7 @@ class DataAccessLayer {
     async editDoc(req) {
         try {
             await this.mongoose.connect(this.dbUrl, { useNewUrlParser: true });
-            const RoomModel = this.models.getModel("Rooms");
+            const RoomModel = this.models.getModel("Users");
             let query = { id: req.id };
             let data = req;
             let updatedRoomDoc = await RoomModel.findOneAndUpdate(query, data, { new: true });
@@ -50,7 +50,7 @@ class DataAccessLayer {
     async removeDoc(query) {
         try {
             await this.mongoose.connect(this.dbUrl, { useNewUrlParser: true });
-            const RoomModel = this.models.getModel("Rooms");
+            const RoomModel = this.models.getModel("Users");
             let updatedRoomDoc = RoomModel.findOneAndRemove(query);
             return updatedRoomDoc;
         } catch (error) {
@@ -63,29 +63,27 @@ class DataAccessLayer {
 
 module.exports = { DataAccessLayer };
 
-
 const DummyData = [{
-        "id": "d635c003-fffc-4beb-87b8-eaf3458cf772",
-        "name": "Economy Single Room",
-        "available_amount": 10,
-        "required_points": 260
+        "id": "abc1-548c-4739-8e6a-0931cc218cd1",
+        "name": "Arun",
+        "role": "ADMIN",
+        "bonus_points": 5000
     },
     {
-        "id": "d635c003-fffc-4beb-87b8-eaf3458cf662",
-        "name": "Luxury Single Room",
-        "available_amount": 10,
-        "required_points": 960
+        "id": "hydg-548c-4739-8e6a-0931cc218cd1",
+        "name": "Nathan",
+        "role": "USER",
+        "bonus_points": 200
     },
     {
-        "id": "d635c003-fffc-4beb-87b8-eaf3458cf442",
-        "name": "Economy Double Room",
-        "available_amount": 10,
-        "required_points": 160
+        "id": "jshs-6a-0931cc218cd1",
+        "name": "Jane Doe",
+        "role": "USER",
+        "bonus_points": 900
     },
     {
-        "id": "d635c003-fffc-4beb-87b8-eaf3458cf552",
-        "name": "Luxury Single Room",
-        "available_amount": 5,
-        "required_points": 800
+        "id": "b9fa7d71-9ikj-931cc218cd1",
+        "name": "Heramba",
+        "bonus_points": 150
     }
 ];
