@@ -4,14 +4,14 @@ let dataAccessLayer = new DataAccessLayer();
 class Resolvers {
     constructor(dbLayer = dataAccessLayer) {
         this.dataAccessLayer = dbLayer;
-        this.room = this.roomResolver;
-        this.rooms = this.roomsResolver;
+        this.booking = this.bookingResolver;
+        this.bookings = this.bookingsResolver;
     }
-    async roomResolver(args, context) {
+    async bookingResolver(args, context) {
         let res = await this.dataAccessLayer.getDocs(args);
         return res[0];
     }
-    async roomsResolver(parent, args, context, info) {
+    async bookingsResolver(parent, args, context, info) {
         let res = await this.dataAccessLayer.getDocs({});
         return res;
     }
