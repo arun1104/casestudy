@@ -5,21 +5,21 @@ class Mutations {
 
     constructor(dbLayer = dataAccessLayer) {
         this.dataAccessLayer = dbLayer;
-        this.createRoom = this.createRoomMutation;
-        this.editRoom = this.editRoomMutation;
-        this.removeRoom = this.removeRoomMutation;
+        this.newBooking = this.createBookingMutation;
+        this.editBooking = this.editBookingMutation;
+        this.removeBooking = this.removeBookingMutation;
     }
-    async createRoomMutation(args, context) {
+    async createBookingMutation(args, context) {
         let res = await dataAccessLayer.saveDoc(args);
         return res;
     }
 
-    async editRoomMutation(args, context) {
+    async editBookingMutation(args, context) {
         let res = await dataAccessLayer.editDoc(args);
         return res;
     }
 
-    async removeRoomMutation(args, context) {
+    async removeBookingMutation(args, context) {
         let res = await dataAccessLayer.removeDoc(args);
         return res;
     }
