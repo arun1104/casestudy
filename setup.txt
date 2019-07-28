@@ -1,0 +1,6 @@
+cd C:\casestudy\BookingService
+npm run
+cd C:\casestudy\RoomService
+npm run
+cd C:\casestudy\UserService
+npm run
