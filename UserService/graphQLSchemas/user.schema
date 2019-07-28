@@ -9,8 +9,8 @@ type Query {
         bonus_point: Int
     }
 type Mutation {
-   createUser(id:ID,name:String,role:String,bonus_point:Int):User
-   editUser(id:ID,name:String,role:String,bonus_point:Int):User
-   removeUser(id:ID):User
-   editBonus(id:ID,bonus_point:Int):User
+   createUser(id:ID,name:String!,role:String,bonus_point:Int):User
+   editUser(id:ID!,name:String,role:String,bonus_point:Int):User
+   removeUser(id:ID!):User
+   editBonus(id:ID!,bonus_point:Int):User
 }
