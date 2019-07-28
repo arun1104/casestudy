@@ -37,12 +37,13 @@ class Mutations {
             newBonusPoint = newBonusPoint + args.bonus_point;
         }
         let res = await dataAccessLayer.editDoc({ id: args.id, bonus_point: newBonusPoint });
-        let sendToQueue = await Queue.publish();
+        let sendToQueue = await Queue.publish({ topic: "user_bonus", id: args.id, bonus_point: newBonusPoint });
         return res;
     }
 
     async removeUserMutation(args, context) {
         let res = await dataAccessLayer.removeDoc(args);
+        let sendToQueue = await Queue.publish({ topic: "user_removed", id: args.id });
         return res;
     }
 }

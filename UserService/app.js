@@ -16,7 +16,6 @@ app.use('/users', express_graphql({
     graphiql: true
 }));
 app.listen(4001, () => console.log('User service running On localhost:4001'));
-
 //sample requests
 //Simple Query GET : http://localhost:4000/rooms?query={room(id: "d635c003-fffc-4beb-87b8-eaf3458cf442"){id,name}}
 /*

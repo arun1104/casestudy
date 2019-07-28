@@ -1,4 +1,5 @@
 const { DataAccessLayer } = require('../sdk/db/dataAccessLayer.js');
+const { Queue } = require('../sdk/messageBroker/rabbitmq.js');
 let dataAccessLayer = new DataAccessLayer();
 
 class Mutations {
@@ -16,11 +17,15 @@ class Mutations {
 
     async editRoomMutation(args, context) {
         let res = await dataAccessLayer.editDoc(args);
+        if (res.available_amount == 0) {
+            Queue.publish({ topic: "room_availability", id: res.id, available_amount: 0 });
+        }
         return res;
     }
 
     async removeRoomMutation(args, context) {
         let res = await dataAccessLayer.removeDoc(args);
+        Queue.publish({ topic: "room_availability", id: res.id, available_amount: 0 });
         return res;
     }
 }

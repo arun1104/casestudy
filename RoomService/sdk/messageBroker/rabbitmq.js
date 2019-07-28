@@ -7,14 +7,16 @@ class RabbitMQ {
         try {
             let conn = await amqp.connect('amqp://localhost');
             let ch = await conn.createChannel();
-            let QCreated = await ch.assertQueue(q);
+            let QPresent = await ch.assertQueue(q);
             let res = await ch.sendToQueue(q, Buffer.from(JSON.stringify(data)));
-            console.log("User has sent message to Queue");
-            setTimeout(function() { conn.close();
-                console.log('Connection to message broker closed'); }, 500);
+            console.log("Room has sent message to Queue");
+            setTimeout(function() {
+                conn.close();
+                console.log('Connection to message broker closed');
+            }, 500);
             return res;
         } catch (err) {
-            console.log("Error on message broker" + util.inspect(err, null));
+            console.log("Error on message broker" + util.inspect(err, null))
         }
     }
 }
