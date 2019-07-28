@@ -18,7 +18,6 @@ app.use('/users', express_graphql({
 app.listen(4001, () => console.log('User service running On localhost:4001'));
 
 //sample requests
-//Mutation POST : http://localhost:4000/rooms?query=mutation {createRoom(id: 7, name:"Arun") {name,id}}
 //Simple Query GET : http://localhost:4000/rooms?query={room(id: "d635c003-fffc-4beb-87b8-eaf3458cf442"){id,name}}
 /*
 mutation{createUser(id: "abc1-548c-4739-8e6a-0931cc218cd1",
@@ -26,3 +25,5 @@ mutation{createUser(id: "abc1-548c-4739-8e6a-0931cc218cd1",
         role: "ADMIN",
         bonus_point: 5000){id,name,role,bonus_point}}
 */
+//mutation{createUser(id:"454647",name:"raghav",role:"USER",bonus_point:1000){id,name,role,bonus_point}}
+//mutation{editBonus(id:454647,bonus_point:-100){id,name,role,bonus_point}}

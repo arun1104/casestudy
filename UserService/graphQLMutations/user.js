@@ -1,4 +1,5 @@
 const { DataAccessLayer } = require('../sdk/db/dataAccessLayer.js');
+const { Queue } = require('../sdk/messageBroker/rabbitmq.js');
 let dataAccessLayer = new DataAccessLayer();
 
 class Mutations {
@@ -27,11 +28,16 @@ class Mutations {
 
     async editBonusPointMutation(args, context) {
         let userDocs = await this.dataAccessLayer.getDocs({ id: args.id });
-        let newBonusPoint = userDocs[0].bonus_point;
+        let newBonusPoint;
+        if (userDocs.length > 0) {
+            newBonusPoint = userDocs[0].bonus_point; //initialize newBonusPoint
+        } else return new Error('No such user');
+
         if (args.bonus_point) {
             newBonusPoint = newBonusPoint + args.bonus_point;
         }
         let res = await dataAccessLayer.editDoc({ id: args.id, bonus_point: newBonusPoint });
+        let sendToQueue = await Queue.publish();
         return res;
     }
 
