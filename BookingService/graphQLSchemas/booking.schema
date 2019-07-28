@@ -1,0 +1,22 @@
+type Query {
+        booking(id: ID!): Booking
+        bookings(user_id: String): [Booking]
+    },
+   type Booking {
+        id: ID!
+        room_id: String
+        room_name: String
+        user_id: String
+        user_name : String
+        status : State
+    }
+type Mutation {
+   newBooking(id:ID,room_id:String,room_name:String,user_id: String,user_name : String,status : State):Booking
+   editBooking(id:ID,status:State):Booking
+   removeBooking(id:ID,user_id: String):Booking
+}
+enum State {
+  BOOKED
+  PENDING
+  CANCELLED
+}

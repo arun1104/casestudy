@@ -1,0 +1,62 @@
+{
+    // Use IntelliSense to learn about possible Node.js debug attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [{
+            "type": "node",
+            "request": "launch",
+            "name": "Mocha Unit tests",
+            "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
+            "args": [
+                "--reporter",
+                "mochawesome",
+                "--recursive",
+                "--timeout",
+                "999999",
+                "--colors",
+                "${workspaceRoot}/test/unit"
+            ],
+            "internalConsoleOptions": "openOnSessionStart"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Mocha Integration tests",
+            "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
+            "args": [
+                "--reporter",
+                "mochawesome",
+                "--recursive",
+                "--timeout",
+                "999999",
+                "--colors",
+                "${workspaceRoot}/node/test/integration"
+            ],
+            "env": { "apiUrl": "http://localhost:5001" },
+            "internalConsoleOptions": "openOnSessionStart"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Mocha current file",
+            "program": "${workspaceRoot}/node/node_modules/mocha/bin/_mocha",
+            "args": [
+                "-u",
+                "tdd",
+                "--timeout",
+                "999999",
+                "--colors",
+                "${file}"
+            ],
+            "internalConsoleOptions": "openOnSessionStart"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "app",
+            "program": "${workspaceRoot}/UserService/app",
+            "env": { "NODE_ENV": "dev" }
+        }
+    ]
+}
