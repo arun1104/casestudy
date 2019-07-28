@@ -39,7 +39,8 @@ class SchemaValidation {
 class Schemas {
     static getBookingschema(db) {
         return new db.Schema({
-            user_id: SchemaValidation.idValidator("user_id", true),
+            id: SchemaValidation.idValidator("id", true),
+            user_id: SchemaValidation.idValidator("user_id"),
             user_name: SchemaValidation.nameValidator("user_name"),
             room_id: SchemaValidation.nameValidator("room_id"),
             room_name: SchemaValidation.nameValidator("room_name"),
